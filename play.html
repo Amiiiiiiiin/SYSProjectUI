@@ -21,7 +21,7 @@
         
         <div v-bind:class="backgroundColour" style="height:100%;">
         
-        <input class="" v-model="artist" placeholder="Artist">
+        <input v-model="artist" placeholder="Artist">
         <input v-model="track" placeholder="Song">
         <button class="btn btn-primary" v-on:click="getByArtistAndTrack(artist, track)">Get song</button>
 
