@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <link rel="stylesheet" href="css/play.css">
     <script src="https://unpkg.com/vue@next"></script>
     <title>Setup</title>
 </head>
 
-<body>
+<body> 
     <div id="app">
+        <div class="topnav">
+            <a id="home-nav" href="index.html">Home</a>
+            <a class="active" href="play.html">Play</a>
+            <a href="setup.html">Setup</a>
+        </div>
         <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profil</button>
         <br><ul id="profilelist" v-if="profiles.length" id="getAllButton"></button>
             <li v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)" class="btn btn-primary">
