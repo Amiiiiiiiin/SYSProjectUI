@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" style="height:100%;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/play.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+</head>
+<body style="height:100%;"> 
+    <div id="app" style="height:100%;">
+        <div v-bind:class="backgroundColour" style="height:100%;">
+        
+        <input v-model="artist" placeholder="Artist">
+        <input v-model="track" placeholder="Song">
+        <button class="btn btn-primary" v-on:click="getByArtistAndTrack(artist, track)">Get song</button>
+
+        <div v-if="error" style="color: red">{{error}}</div>
+        
+        <ul v-if="searchedTrack != null">
+            <li v-for="currentTrack in searchedTrack.track">
+                Artist {{currentTrack.strArtist}} Track {{currentTrack.strTrack}} Genre {{currentTrack.strGenre}}
+            </li>
+        </ul>
+    </div></div>
+    <script src="js/play.js"></script>
+</body>
+</html>

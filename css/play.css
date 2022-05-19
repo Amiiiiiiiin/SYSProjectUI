@@ -1,0 +1,7 @@
+.white {
+    background: rgb(255,255,255)
+}
+.green {
+    background: rgb(9, 121, 15);
+    background: linear-gradient(90deg, rgb(9, 121, 15) 0%, rgb(5, 219, 15) 35%, rgb(162, 255,1) 100%);
+  }
