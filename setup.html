@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
-    <link rel="stylesheet" href="css/play.css">
+    <link rel="stylesheet" href="css/setup.css">
     <script src="https://unpkg.com/vue@next"></script>
     <title>Setup</title>
 </head>
@@ -15,9 +15,16 @@
     <div id="app">
         <div class="topnav">
             <a id="home-nav" href="index.html">Home</a>
-            <a class="active" href="play.html">Play</a>
-            <a href="setup.html">Setup</a>
+            <a href="play.html">Play</a>
+            <a class="active" href="setup.html">Setup</a>
         </div>
+        <div id="profile-input">
+            <input type ="text" placeholder="Ny profil"  v-model="newProfileName"/>
+            <button v-on:click="saveProfileName" class="btn btn-primary">Gem</button>
+            <input v-model="deleteProfile" placeholder="Slet profil">
+            <button v-on:click="deleteProfileName" class="btn btn-warning">Delete</button>
+        </div>
+
         <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profil</button>
         <br><ul id="profilelist" v-if="profiles.length" id="getAllButton"></button>
             <li v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)" class="btn btn-primary">
@@ -30,9 +37,6 @@
                     </li>
                 </ul>
 
-                <input type ="text" placeholder="Ny profil"  v-model="newProfileName"/> <button v-on:click="saveProfileName" class="btn btn-primary">Gem</button>
-                <br>
-                <input v-model="deleteProfile" placeholder="Slet profil"> <button v-on:click="deleteProfileName" class="btn btn-warning">Delete</button>
 
 
     <script src="js/setup.js"></script>
