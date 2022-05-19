@@ -11,10 +11,17 @@
     <title>Document</title>
 </head>
 <body style="height:100%;"> 
-    <div id="app" style="height:100%;">
+    <div id="app" style="height:100%;" class="bodyCSS">
+
+        <div class="topnav">
+            <a href="index.html">Home</a>
+            <a class="active" href="play.html">Play</a>
+            <a href="setup.html">Setup</a>
+        </div>
+        
         <div v-bind:class="backgroundColour" style="height:100%;">
         
-        <input v-model="artist" placeholder="Artist">
+        <input class="" v-model="artist" placeholder="Artist">
         <input v-model="track" placeholder="Song">
         <button class="btn btn-primary" v-on:click="getByArtistAndTrack(artist, track)">Get song</button>
 
