@@ -53,6 +53,7 @@
   .dropdown {
     position: relative;
     display: inline-block;
+    padding-top: 1rem;
   }
   
   .dropdown-content {
