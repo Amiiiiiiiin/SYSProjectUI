@@ -14,23 +14,37 @@
     <div id="app">
         <div v-bind:class="backgroundColour" id="main-bg"> </div>
         <div class="topnav">
-            <a id="home-nav" href="index.html">Home</a>
+            <a id="home-nav" href="play.html">Home</a>
             <a class="active" href="play.html">Play</a>
             <a href="setup.html">Setup</a>
         </div>
+
+        <div class="dropdown">
+            <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
+            <div class="dropdown-content">
+                <a href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
+            </div>
+
+        </div>
+        <!--<button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
+                    <li v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)" class="btn btn-primary">
+                        {{profile}}
+                        </li>
+                    </ul>-->
+
         <div>
             <div id="music-input">
                 <input v-model="artist" type="text" placeholder="Artist" name="artist" id="artist">
                 <input v-model="track" type="text" placeholder="Song" name="song" id="song">
                 <button class="btn btn-primary" id="submit-button" v-on:click="getByArtistAndTrack(artist, track)">Get song</button>
             </div>
-
             <div v-if="error" style="color: red">{{error}}</div>
             
             <ul v-if="searchedTrack != null">
-                <li v-for="currentTrack in searchedTrack.track">
-                    Artist {{currentTrack.strArtist}} Track {{currentTrack.strTrack}} Genre {{currentTrack.strGenre}}
-                </li>
+                <li type="text" v-for="currentTrack in searchedTrack.track">{{currentTrack.strArtist}}</li>
+                <li v-for="currentTrack in searchedTrack.track">{{currentTrack.strTrack}}</li>
+                <li v-for="currentTrack in searchedTrack.track">{{currentTrack.strGenre}}</li>
+                <li v-for="currentTrack in searchedTrack.track">{{currentTrack.strMusicVid}}</li>
             </ul>
         </div>
     </div>

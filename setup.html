@@ -14,30 +14,35 @@
 <body> 
     <div id="app">
         <div class="topnav">
-            <a id="home-nav" href="index.html">Home</a>
+            <a id="home-nav" href="play.html">Home</a>
             <a href="play.html">Play</a>
             <a class="active" href="setup.html">Setup</a>
         </div>
         <div id="profile-input">
-            <input type ="text" placeholder="Ny profil"  v-model="newProfileName"/>
-            <button v-on:click="saveProfileName" class="btn btn-primary">Gem</button>
-            <input v-model="deleteProfile" placeholder="Slet profil">
+            <input type ="text" placeholder="New Profile"  v-model="newProfileName"/>
+            <button v-on:click="saveProfileName" class="btn btn-primary">Create</button>
+            <input v-model="deleteProfile" placeholder="Delete">
             <button v-on:click="deleteProfileName" class="btn btn-warning">Delete</button>
         </div>
 
-        <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profil</button>
-        <br><ul id="profilelist" v-if="profiles.length" id="getAllButton"></button>
+
+        
+        <div class="dropdown">
+            <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
+            <div class="dropdown-content">
+                <a href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
+            </div>
+        </div>
+        <!--<button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
+        <ul id="profilelist" v-if="profiles.length" id="getAllButton">
             <li v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)" class="btn btn-primary">
                 {{profile}}
-                </li>
-            </ul>
-            <ul id="genreColourslist" v-if="genreColours.length" id="getAllButton"></button>
+                </li>-->
+            <ul>
                 <li v-for="genreColour in genreColours" v-on:click="setActiveGenre(genreColour.genre)" class="btn btn-primary">
                     {{genreColour.genre}} {{genreColour.colour}}
                     </li>
                 </ul>
-
-
 
     <script src="js/setup.js"></script>
 </body> 

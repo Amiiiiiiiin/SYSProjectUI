@@ -1,15 +1,19 @@
 const RESTUrl = "https://udprest20220504132553.azurewebsites.net/api/colour"
 const APIUrl = "https://theaudiodb.com/api/v1/json/523532/searchtrack.php"
+const updateProfileUrl = "https://udprest20220504132553.azurewebsites.net/api/Colour/update/profile?profileName="
+const genreColourUrl = "https://udprest20220504132553.azurewebsites.net/api/Colour/profiles/genres?profileName="
+const baseUrl = "https://udprest20220504132553.azurewebsites.net/api/Colour/profiles"
 
 Vue.createApp({
     data() {
         return {
             searchedTrack: null,
-            artist: "eminem",
-            track: "soldier",
+            artist: "",
+            track: "",
             error: null,
-            currentProfile: "amin",
-            backgroundColour: "white"
+            currentProfile: "",
+            backgroundColour: "white",
+            profiles: []
         }
     },
     async created() {
@@ -58,6 +62,27 @@ Vue.createApp({
                 this.error = ex.message
                 //console.log("")
             }
-        }
+        },
+        async genreColourGetAndShow(profile) {
+            try {
+                const putResponse = await axios.put(updateProfileUrl + profile)
+                console.log(putResponse.data)
+                const getResponse = await axios.get(genreColourUrl + profile)
+                this.currentProfile = profile
+            } catch (ex) {
+                alert(ex.message)
+            }
+        },
+        getAllProfiles() {    
+            this.helperGetAndShow(baseUrl)
+        },
+        async helperGetAndShow(url) {
+            try {
+                const response = await axios.get(url)
+                this.profiles = await response.data
+            } catch (ex) {
+                alert(ex.message)
+            }
+        },
     }
 }).mount("#app")
