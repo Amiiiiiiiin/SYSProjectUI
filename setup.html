@@ -19,9 +19,9 @@
             <a class="active" href="setup.html">Setup</a>
         </div>
         <div id="profile-input">
-            <input type ="text" placeholder="New Profile"  v-model="newProfileName"/>
+            <input id="nameField" type ="text" placeholder="New Profile"  v-model="newProfileName"/>
             <button v-on:click="saveProfileName" class="btn btn-primary">Create</button>
-            <input v-model="deleteProfile" placeholder="Delete">
+            <input id="deleteField" v-model="deleteProfile" placeholder="Delete">
             <button v-on:click="deleteProfileName" class="btn btn-warning">Delete</button>
         </div>
 
@@ -29,8 +29,8 @@
         
         <div class="dropdown">
             <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
-            <div class="dropdown-content">
-                <a href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
+            <div id="dropDown"class="dropdown-content">
+                <a id="list" href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
             </div>
         </div>
         <!--<button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
