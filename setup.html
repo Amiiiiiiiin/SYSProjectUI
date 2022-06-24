@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/setup.css">
     <script src="https://unpkg.com/vue@next"></script>
     <title>Setup</title>
@@ -18,32 +19,54 @@
             <a href="index.html">Play</a>
             <a class="active" href="setup.html">Setup</a>
         </div>
+        <div>
+            <div class="dropdown">
+                <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-secondary">Profiles</button>
+                <div class="dropdown-content">
+                    <a href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
+                </div>
+            </div>
         <div id="profile-input">
-            <input id="nameField" type ="text" placeholder="New Profile"  v-model="newProfileName"/>
-            <button v-on:click="saveProfileName" class="btn btn-primary">Create</button>
-            <input id="deleteField" v-model="deleteProfile" placeholder="Delete">
-            <button v-on:click="deleteProfileName" class="btn btn-warning">Delete</button>
+            <input v-model="newProfileName" type="text" placeholder="New Profile" name="newProfile" id="nameField" />
+            <button v-on:click="saveProfileName" class="btn btn-dark" id="createButton">Create</button>
+        </div>
+        <div id="profile-input">
+            <input v-model="deleteProfile" type="text" placeholder="Delete Profile" name="deleteProfile" id="deleteField">
+            <button v-on:click="deleteProfileName" class="btn btn-warning" id="deleteButton">Delete</button>
         </div>
 
 
         
-        <div class="dropdown">
-            <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
+        <!--<div class="dropdown">
+            <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-dark">Profiles</button>
             <div id="dropDown"class="dropdown-content">
                 <a id="list" href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
             </div>
-        </div>
+        </div>-->
         <!--<button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
         <ul id="profilelist" v-if="profiles.length" id="getAllButton">
             <li v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)" class="btn btn-primary">
                 {{profile}}
                 </li>-->
-            <ul>
+        <br>
+        <table class="table table-hover" v-if="genreColours.length > 0">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Genre</th>
+                    <th>Colour</th>
+                </tr>
+            </thead>
+            <tr v-for="genreColour in genreColours">
+                <td>{{genreColour.genre}}</td>
+                <td><button id="setActiveGenreButton" v-on:click="setActiveGenre(genreColour.genre)" class="btn btn-dark"><i class='fa fa-edit'></i></button> {{genreColour.colour}}</td>
+            </tr>
+        </table>
+            <!--<ul>
                 <li v-for="genreColour in genreColours" v-on:click="setActiveGenre(genreColour.genre)" class="btn btn-primary">
                     {{genreColour.genre}}: {{genreColour.colour}}
                     </li>
-                </ul>
-
+                </ul>-->
+        </div>
     <script src="js/setup.js"></script>
 </body> 
 </html>

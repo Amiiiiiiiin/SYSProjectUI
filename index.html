@@ -19,13 +19,7 @@
             <a href="setup.html">Setup</a>
         </div>
 
-        <div class="dropdown">
-            <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
-            <div class="dropdown-content">
-                <a href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
-            </div>
 
-        </div>
         <!--<button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-primary">Profiles</button>
                     <li v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)" class="btn btn-primary">
                         {{profile}}
@@ -33,10 +27,22 @@
                     </ul>-->
 
         <div>
+            <div class="dropdown">
+                <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-secondary">Profiles</button>
+                <div class="dropdown-content">
+                    <a href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
+                </div>
+            </div>
             <div id="music-input">
                 <input v-model="artist" type="text" placeholder="Artist" name="artist" id="artist">
                 <input v-model="track" type="text" placeholder="Song" name="song" id="song">
-                <button class="btn btn-primary" id="submit-button" v-on:click="getByArtistAndTrack(artist, track)">Get song</button>
+                <button class="btn btn-dark" id="submit-button" v-on:click="getByArtistAndTrack(artist, track)">Get song</button>
+                <!--<div class="dropdown">
+                    <button id="getAllButton" v-on:click="getAllProfiles" class="btn btn-secondary">Profiles</button>
+                    <div class="dropdown-content">
+                        <a href="#" v-for="profile in profiles" v-on:click="genreColourGetAndShow(profile)">{{profile}}</a>
+                    </div>
+                </div>-->
             </div>
             <div v-if="error" style="color: red">{{error}}</div>
             
